@@ -1,0 +1,20 @@
+{
+  "name": "k8w-linq-array",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register"
+  },
+  "keywords": [
+    "k8w",
+    "linq",
+    "array"
+  ],
+  "author": "k8w",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.23"
+  }
+}
