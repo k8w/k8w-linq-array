@@ -1,4 +1,4 @@
-///<reference path="LinqArray.d.ts"/>
+///<reference path="index.d.ts"/>
 
 Array.prototype.remove = function (filter: (v: any, i: any, arr: any) => boolean | any): any[] {
     if (typeof (filter) == 'function') {

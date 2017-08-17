@@ -1,4 +1,4 @@
-import '../src/LinqArray';
+import '../index';
 const assert = require('assert');
 
 describe('LinqArray', function(){

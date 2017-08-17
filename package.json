@@ -2,9 +2,9 @@
   "name": "k8w-linq-array",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/src/LinqArray.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register"
+    "test": "mocha"
   },
   "keywords": [
     "k8w",
