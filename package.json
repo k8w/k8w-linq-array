@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "rm -rf dist && tsc && cp package.json index.d.ts dist/"
   },
   "keywords": [
     "k8w",
@@ -16,5 +17,6 @@
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.23"
-  }
+  },
+  "typings": "index.d.ts"
 }
