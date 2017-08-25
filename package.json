@@ -7,6 +7,10 @@
     "test": "mocha",
     "build": "rm -rf dist && tsc && cp package.json index.d.ts dist/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k8w/k8w-linq-array.git"
+  },
   "keywords": [
     "k8w",
     "linq",
