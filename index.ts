@@ -134,17 +134,72 @@ Array.prototype.orderByDesc = function (...mappers: any[]) {
     });
 }
 
-Array.prototype.binIndexOf = function (filter: any) {
+Array.prototype.binarySearch = function (value: number | string, keyMapper?: (v: any) => (number | string)): number {
     let low = 0,
         high = this.length - 1;
+
     while (low <= high) {
-        let mid = Math.floor(((high + low) / 2));
-        if (filter === this[mid]) {
+        let mid = ((high + low) / 2) | 0;
+        let midValue = keyMapper ? keyMapper(this[mid]) : this[mid];
+        if (value === midValue) {
             return mid;
-        } else if (filter > this[mid]) {
+        } else if (value > midValue) {
             low = mid + 1;
-        } else if (filter < this[mid]) {
+        } else if (value < midValue) {
             high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+Array.prototype.binaryInsert = function (item: any, keyMapper?: any, unique?: boolean): number {
+    if (typeof (keyMapper) == 'boolean') {
+        unique = keyMapper;
+        keyMapper = undefined;
+    }
+
+    let low = 0, high = this.length - 1;
+    let mid: number = NaN;
+    let itemValue = keyMapper ? keyMapper(item) : item;
+
+    while (low <= high) {
+        mid = ((high + low) / 2) | 0;
+        let midValue = keyMapper ? keyMapper(this[mid]) : this[mid];
+        if (itemValue === midValue) {
+            if (unique) {
+                return mid;
+            }
+            else {
+                break;
+            }
+        } else if (itemValue > midValue) {
+            low = mid + 1;
+        } else if (itemValue < midValue) {
+            high = mid - 1;
+        }
+    }
+    let index = low > mid ? mid + 1 : mid;
+    this.splice(index, 0, item);
+    return index;
+}
+
+Array.prototype.binaryDistinct = function (keyMapper?: (v: any) => (number | string)) {
+    return this.filter((v, i, arr) => arr.binarySearch(v, keyMapper) === i);
+}
+
+Array.prototype.findLast = function (predicate: (value: any, index: number, obj: Array<any>) => boolean): any | undefined {
+    for (let i = this.length - 1; i > -1; --i) {
+        if (predicate(this[i], i, this)) {
+            return this[i];
+        }
+    }
+    return undefined;
+}
+
+Array.prototype.findLastIndex = function (predicate: (value: any, index: number, obj: Array<any>) => boolean): number {
+    for (let i = this.length - 1; i > -1; --i) {
+        if (predicate(this[i], i, this)) {
+            return i;
         }
     }
     return -1;
