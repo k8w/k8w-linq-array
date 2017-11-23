@@ -204,3 +204,19 @@ Array.prototype.findLastIndex = function (predicate: (value: any, index: number,
     }
     return -1;
 }
+
+Array.prototype.groupBy = function (grouper: (v: any) => string): any[] & { key: any } {
+    let group = this.reduce((prev, next) => {
+        let groupKey = grouper(next);
+        if (!prev[groupKey]) {
+            prev[groupKey] = [];
+        }
+        prev[groupKey].push(next)
+        return prev;
+    }, {});
+    return Object.keys(group).map(key => {
+        let arr = group[key];
+        arr.key = key;
+        return arr;
+    }) as any
+}

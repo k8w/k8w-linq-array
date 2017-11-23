@@ -52,4 +52,6 @@ interface Array<T> {
      * @param keyMapper 二分查找时要查找的值的mapper方法（默认为查找数组元素本身）
      */
     binaryDistinct(keyMapper?: (v: T) => (number | string)): Array<T>;
+
+    groupBy(grouper: (v: T) => any): (T[] & { key: any })[];
 }

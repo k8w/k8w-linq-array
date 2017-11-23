@@ -183,4 +183,22 @@ describe('LinqArray', function () {
         assert.deepEqual([0, 0, 0, 0, 1, 2, 3, 4, 5].findLastIndex(v => v % 2 == 0), 7);
         assert.deepEqual([0, 0, 0, 0, 1, 2, 3, 4, 5].map(v => ({ value: v })).findLastIndex(v => v.value % 2 == 0), 7);
     })
+
+    it('groupBy', function () {
+        assert.deepEqual(
+            ['a1', 'a3', 'a2', 'a3', 'a2', 'a3'].groupBy(v => v).map(v => [v.key, v.length]),
+            [['a1', 1], ['a3', 3], ['a2', 2]]
+        )
+
+        assert.deepEqual(
+            ['a1', 'a3', 'a2', 'a3', 'a2', 'a3'].map(v=>({value: v})).groupBy(v => v.value).map(v => [v.key, v.length]),
+            [['a1', 1], ['a3', 3], ['a2', 2]]
+        )
+
+        //数字Key顺序按数字
+        assert.deepEqual(
+            ['1', '3', '2', '3', '2', '3'].groupBy(v => v).map(v => [v.key, v.length]),
+            [['1', 1], ['2', 2], ['3', 3]]
+        )
+    })
 });
