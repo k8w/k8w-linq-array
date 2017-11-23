@@ -1,11 +1,12 @@
 {
   "name": "k8w-linq-array",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "LINQ-like functions extended to native Array",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "rm -rf dist && tsc && cp package.json index.d.ts LICENSE README.md dist/"
+    "build": "rm -rf dist && tsc && cp package.json index.d.ts LICENSE README.md dist/",
+    "pub": "npm run build && cd dist && npm publish & cd .."
   },
   "repository": {
     "type": "git",
