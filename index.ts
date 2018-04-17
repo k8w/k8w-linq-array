@@ -104,12 +104,24 @@ Array.prototype.filterIndex = function (filter: any) {
 
 Array.prototype.count = function (filter: (v: any, i: number, arr: any[]) => boolean): number {
     let result = 0;
-    for (let i = 0; i < this.length; ++i){
+    for (let i = 0; i < this.length; ++i) {
         if (filter(this[i], i, this)) {
             ++result;
         }
     }
     return result;
+}
+
+Array.prototype.sum = function (mapper?: (v: any, i: number, arr: any[]) => number): number {
+    let result = 0;
+    for (let i = 0; i < this.length; ++i) {
+        result += mapper ? mapper(this[i], i, this) : this[i];
+    }
+    return result;
+}
+
+Array.prototype.average = function (mapper?: (v: any, i: number, arr: any[]) => number): number {
+    return this.sum(mapper) / this.length;
 }
 
 Array.prototype.orderBy = function (...mappers: any[]) {

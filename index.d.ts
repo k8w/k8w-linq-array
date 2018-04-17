@@ -19,6 +19,8 @@ interface Array<T> {
     filterIndex(filter: (v: T, i: number, arr: this) => boolean): Array<number>;
 
     count(filter: (v: T, i: number, arr: this) => boolean): number;
+    sum(mapper?: (v: T, i: number, arr: this) => number): number;
+    average(mapper?: (v: T, i: number, arr: this) => number): number;
 
     /**
      * 同find，但返回整个Array<T>中最后一个匹配元素

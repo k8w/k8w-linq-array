@@ -33,6 +33,16 @@ describe('LinqArray', function () {
         assert.equal([0, 1, 2, 3, 4, 555, 555, 555, 555].count((v, i) => v === i), 5);
     })
 
+    it('sum', function () {
+        assert.equal([1, 2, 3, 4].sum(), 10);
+        assert.equal([{ v: 1 }, { v: 2 }, { v: 3 }, { v: 4 }].sum(v => v.v), 10);
+    })
+
+    it('average', function () {
+        assert.equal([1, 2, 3, 4].average(), 2.5);
+        assert.equal([{ v: 1 }, { v: 2 }, { v: 3 }, { v: 4 }].average(v => v.v), 2.5);
+    })
+
     it('orderBy', function () {
         let a = [
             { a: 6, b: 5 },
