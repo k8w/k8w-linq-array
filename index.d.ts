@@ -18,6 +18,8 @@ interface Array<T> {
     distinct(): Array<T>;
     filterIndex(filter: (v: T, i: number, arr: this) => boolean): Array<number>;
 
+    count(filter: (v: T, i: number, arr: this) => boolean): number;
+
     /**
      * 同find，但返回整个Array<T>中最后一个匹配元素
      */

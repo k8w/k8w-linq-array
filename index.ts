@@ -102,6 +102,16 @@ Array.prototype.filterIndex = function (filter: any) {
     return output;
 }
 
+Array.prototype.count = function (filter: (v: any, i: number, arr: any[]) => boolean): number {
+    let result = 0;
+    for (let i = 0; i < this.length; ++i){
+        if (filter(this[i], i, this)) {
+            ++result;
+        }
+    }
+    return result;
+}
+
 Array.prototype.orderBy = function (...mappers: any[]) {
     return this.slice().sort((a, b) => {
         for (let i = 0; i < mappers.length; ++i) {

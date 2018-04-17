@@ -28,6 +28,11 @@ describe('LinqArray', function () {
         assert.deepEqual([13, 14, 16, 18, 20].filterIndex((v, i, arr) => (v + i * arr.length) % 2 == 1), [0, 1, 3]);
     })
 
+    it('count', function () {
+        assert.equal([1, 3, 5, 7, 9, 2, 4, 6, 8, 0].count(v => v % 2 > 0), 5);
+        assert.equal([0, 1, 2, 3, 4, 555, 555, 555, 555].count((v, i) => v === i), 5);
+    })
+
     it('orderBy', function () {
         let a = [
             { a: 6, b: 5 },
@@ -191,7 +196,7 @@ describe('LinqArray', function () {
         )
 
         assert.deepEqual(
-            ['a1', 'a3', 'a2', 'a3', 'a2', 'a3'].map(v=>({value: v})).groupBy(v => v.value).map(v => [v.key, v.length]),
+            ['a1', 'a3', 'a2', 'a3', 'a2', 'a3'].map(v => ({ value: v })).groupBy(v => v.value).map(v => [v.key, v.length]),
             [['a1', 1], ['a3', 3], ['a2', 2]]
         )
 
