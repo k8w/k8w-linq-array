@@ -1,6 +1,6 @@
 {
   "name": "k8w-linq-array",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "LINQ-like functions extended to native Array",
   "main": "index.js",
   "scripts": {

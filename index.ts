@@ -39,7 +39,7 @@ Object.defineProperties(Array.prototype, {
             return this;
         }
     },
-    
+
     first: {
         value: function () {
             return this.length ? this[0] : null;
@@ -265,7 +265,7 @@ Object.defineProperties(Array.prototype, {
 
     groupBy: {
         value: function (grouper: (v: any) => string): any[] & { key: any } {
-            let group = this.reduce((prev:any, next:any) => {
+            let group = this.reduce((prev: any, next: any) => {
                 let groupKey = grouper(next);
                 if (!prev[groupKey]) {
                     prev[groupKey] = [];
