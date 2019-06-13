@@ -1,5 +1,5 @@
 ///<reference path="index.d.ts"/>
-Object.defineProperties(Array.prototype, {
+!(Array.prototype as any).__k8w_extended && Object.defineProperties(Array.prototype, {
     remove: {
         value: function (filter: (v: any, i: any, arr: any) => boolean | any): any[] {
             if (typeof (filter) == 'function') {
@@ -279,5 +279,9 @@ Object.defineProperties(Array.prototype, {
                 return arr;
             }) as any
         }
+    },
+
+    __k8w_extended: {
+        value: true
     }
 })
